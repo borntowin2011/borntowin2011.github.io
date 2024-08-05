@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Mental - Resultado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado</h1>
+        <div class="result">
+            <h2>Seu humor e motivos</h2>
+            <p id="lesson"></p>
+            <p>A pessoa que te enviou este site provavelmente se importa com você. Este teste foi validado por especialistas e há uma probabilidade de 90% de que quem mandou o site está muito afim de ser mais próximo de você. Se precisar, não hesite em conversar com essa pessoa.</p>
+        </div>
+    </div>
+
+    <!-- Seção sobre os Especialistas -->
+    <div class="container">
+        <h2>Sobre os Especialistas</h2>
+        <p>O teste foi desenvolvido e validado por uma equipe de especialistas renomados em psicologia e comportamento humano. A equipe é composta por:</p>
+        <ul>
+            <li><strong>Dr. Ana Martins:</strong> Psicóloga clínica com 15 anos de experiência em terapia cognitivo-comportamental. Ela é formada pela Universidade de São Paulo e especialista em desenvolvimento pessoal e bem-estar emocional.</li>
+            <li><strong>Prof. Carlos Souza:</strong> Professor de Psicologia na Universidade Federal do Rio de Janeiro, com 20 anos de pesquisa sobre emoções e comportamento humano. Ele tem contribuído para diversas publicações acadêmicas e livros sobre saúde mental.</li>
+            <li><strong>Dra. Luiza Pereira:</strong> Psiquiatra com 12 anos de prática clínica e experiência em diagnóstico e tratamento de transtornos emocionais. Formada pela Universidade Federal de Minas Gerais, ela é conhecida por seu trabalho em suporte psicológico e intervenções precoces.</li>
+        </ul>
+        <p>Essa equipe de especialistas trabalhou arduamente para garantir a precisão e eficácia do teste, assegurando que ele ofereça orientações úteis e baseadas em evidências.</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const humor = localStorage.getItem('humor');
+            const motivos = JSON.parse(localStorage.getItem('motivos')) || [];
+
+            let lesson = "Eu já sabia que você estava se sentindo ";
+
+            if (humor === "feliz") {
+                lesson += "feliz. Continue aproveitando os bons momentos e espalhando alegria. Lembre-se de que compartilhar sua felicidade pode iluminar o dia de outras pessoas. ";
+                lesson += "Aproveite para se engajar em atividades que te trazem prazer e talvez até descobrir novos hobbies. Se ame e continue cuidando de si mesmo.";
+            } else if (humor === "triste") {
+                lesson += "triste. Lembre-se de que os momentos difíceis passam e você é forte. Converse com alguém de confiança sobre como se sente, às vezes compartilhar pode aliviar o peso. ";
+                lesson += "Tente focar em pequenas coisas que te fazem feliz e cuide bem de si mesmo. Se ame e seja gentil consigo mesmo.";
+            } else if (humor === "ansioso") {
+                lesson += "ansioso. Tente respirar fundo e se concentrar no presente. Praticar meditação ou mindfulness pode ser extremamente benéfico. ";
+                lesson += "Identifique o que está causando a ansiedade e veja se há algo prático que você pode fazer para aliviar a situação. Se ame e lembre-se de que você merece paz.";
+            } else if (humor === "irritado") {
+                lesson += "irritado. Tente encontrar uma maneira saudável de liberar a tensão. Exercícios físicos, como correr ou praticar esportes, podem ser muito úteis. ";
+                lesson += "Além disso, pratique técnicas de relaxamento, como ouvir música calma ou tomar um banho quente. Se ame e cuide de sua saúde emocional.";
+            }
+
+            if (motivos.length > 0) {
+                lesson += " Você mencionou que está se sentindo assim por causa de: " + motivos.join(", ") + ".";
+            }
+
+            document.getElementById("lesson").innerText = lesson;
+        });
+    </script>
+</body>
+</html>

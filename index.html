@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Mental - Humor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Teste Mental</h1>
+        <form id="mentalTest" onsubmit="storeHumor(event)">
+            <div class="question">
+                <h2>Como você está se sentindo hoje?</h2>
+                <label><input type="radio" name="humor" value="feliz"> Feliz</label><br>
+                <label><input type="radio" name="humor" value="triste"> Triste</label><br>
+                <label><input type="radio" name="humor" value="ansioso"> Ansioso</label><br>
+                <label><input type="radio" name="humor" value="irritado"> Irritado</label><br>
+            </div>
+            <button type="submit">Próximo</button>
+        </form>
+    </div>
+
+    <script>
+        function storeHumor(event) {
+            event.preventDefault();
+            const humor = document.querySelector('input[name="humor"]:checked').value;
+            localStorage.setItem('humor', humor);
+            window.location.href = 'motivos.html';
+        }
+    </script>
+</body>
+</html>

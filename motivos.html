@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Mental - Motivos</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Teste Mental</h1>
+        <form id="motivosTest" onsubmit="storeMotivos(event)">
+            <div class="question">
+                <h2>Qual o motivo do seu humor?</h2>
+                <label><input type="checkbox" name="motivo" value="trabalho"> Trabalho</label><br>
+                <label><input type="checkbox" name="motivo" value="família"> Família</label><br>
+                <label><input type="checkbox" name="motivo" value="saúde"> Saúde</label><br>
+                <label><input type="checkbox" name="motivo" value="relacionamentos"> Relacionamentos</label><br>
+                <label><input type="checkbox" name="motivo" value="financeiro"> Financeiro</label><br>
+            </div>
+            <button type="submit">Ver Resultado</button>
+        </form>
+    </div>
+
+    <script>
+        function storeMotivos(event) {
+            event.preventDefault();
+            const motivos = Array.from(document.querySelectorAll('input[name="motivo"]:checked')).map(el => el.value);
+            localStorage.setItem('motivos', JSON.stringify(motivos));
+            window.location.href = 'resultado.html';
+        }
+    </script>
+</body>
+</html>
